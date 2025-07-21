@@ -1,0 +1,178 @@
+<style>
+  .ctm-shop-cat-main {
+    padding: 40px 0;
+  }
+  .ctm-shop-cat-bg {
+    padding: 40px 0;
+  }
+  .ctm-shop-cat-heading {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 2.2rem;
+  }
+  .ctm-shop-cat-caption {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #6c6c6c;
+  }
+  .ctm-shop-cat-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+  .ctm-shop-cat-item {
+    text-align: center;
+    padding: 16px;
+    border-radius: 8px;
+    transition: box-shadow 0.2s;
+  }
+  .ctm-shop-cat-item:hover {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  }
+  .ctm-shop-cat-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .ctm-shop-cat-img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin-bottom: 12px;
+  }
+  .ctm-shop-cat-title {
+    display: block;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  @media (max-width: 750px) {
+    .ctm-shop-cat-list {
+      gap: 12px;
+    }
+    .ctm-shop-cat-bg,
+    .ctm-shop-cat-main {
+      padding: 20px 0;
+    }
+  }
+</style>
+<div class="ctm-shop-cat-main {{ section.settings.extra_class }}">
+  <div
+    class="ctm-shop-cat-bg"
+    {% if section.settings.background_image != blank %}
+      style="background-image: url({{ section.settings.background_image | image_url: width: 1800 }}); background-size:cover; background-position:center;"
+    {% endif %}
+  >
+    <div class="ctm-shop-cat-container page-width">
+      {% if section.settings.heading != blank %}
+        <h2 class="ctm-shop-cat-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.caption != blank %}
+        <div class="ctm-shop-cat-caption">
+          {{ section.settings.caption }}
+        </div>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="ctm-shop-cat-list grid grid--2-col-tablet-down grid--{{ section.settings.columns_per_row }}-col-desktop">
+          {% for block in section.blocks %}
+            <div class="ctm-shop-cat-item grid__item" {{ block.shopify_attributes }}>
+              {% if block.settings.collection_url != blank %}
+                <a href="{{ block.settings.collection_url }}" class="ctm-shop-cat-link">
+              {% endif %}
+
+              {% if block.settings.collection_image != blank %}
+                <img
+                  src="{{ block.settings.collection_image | image_url: width: 400 }}"
+                  alt="{{ block.settings.collection_name | escape }}"
+                  class="ctm-shop-cat-img"
+                  loading="lazy"
+                  width="auto"
+                  height="auto"
+                >
+              {% endif %}
+
+              {% if block.settings.collection_name != blank %}
+                <span class="ctm-shop-cat-title">
+                  {{ block.settings.collection_name }}
+                </span>
+              {% endif %}
+
+              {% if block.settings.collection_url != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Shop By Category",
+  "class": "ctm-shop-cat-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "image_picker",
+      "label": "Background Image",
+      "id": "background_image"
+    },
+    {
+      "type": "richtext",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "richtext",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+     "type": "range",
+     "id": "columns_per_row",
+     "label": "Columns per row",
+     "min": 2,
+     "max": 6,
+     "step": 1,
+     "default": 4
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_list",
+      "name": "Collection List",
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Collection Image",
+          "id": "collection_image"
+        },
+        {
+          "type": "text",
+          "label": "Collection Name",
+          "id": "collection_name"
+        },
+        {
+          "type": "url",
+          "label": "Collection URL",
+          "id": "collection_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Category"
+    }
+  ]
+}
+{% endschema %}

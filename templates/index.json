@@ -9,76 +9,175 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "slider_e6bkUd": {
+      "type": "slider",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slider_content_T9BfNU": {
+          "type": "slider_content",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "slider_image": "shopify://shop_images/Hero.png",
+            "content_alignment": "left",
+            "heading": "<h1>The Essence of Luxury, Delivered to Your Doorstep.</h1>",
+            "description": "<p>Experience premium, 100% authentic perfumes sourced from Dubai — now available across the UK.</p>",
+            "button_text": "Explore luxury fragrances",
+            "button_url": "#"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slider_content_8rDyUQ": {
+          "type": "slider_content",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "slider_image": "shopify://shop_images/Hero_slide_2.png",
+            "content_alignment": "center",
+            "heading": "<h1>Fragrances That Leave a Lasting Impression</h1>",
+            "description": "<p>From oud to florals, every bottle tells a story of elegance and tradition.</p>",
+            "button_text": "Browse Our Top Picks",
+            "button_url": "#"
+          }
+        },
+        "slider_content_YqRRFJ": {
+          "type": "slider_content",
+          "settings": {
+            "slider_image": "shopify://shop_images/Hero_slide_3.png",
+            "content_alignment": "center",
+            "heading": "<h1>Fragrance Rooted in Heritage, Delivered with Elegance</h1>",
+            "description": "<p>100% authentic Dubai perfumes for lovers of tradition and luxury.</p>",
+            "button_text": "Explore Our Collection",
+            "button_url": "#"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "slider_content_T9BfNU",
+        "slider_content_8rDyUQ",
+        "slider_content_YqRRFJ"
       ],
+      "name": "Slider",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "extra_class": "ctm-hp-slider"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "multicolumn_Ak9xCU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_3KAfz3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/gift.svg",
+            "title": "Up To 40% Offer",
+            "text": "<p>Exclusive deals on top scents</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_dHHRrm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/perfume.svg",
+            "title": "Perfume Variety",
+            "text": "<p>Customize your perfect gift set</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_eaGCUf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/truck_dbc6d754-ea95-4879-a47c-166d17ead717.svg",
+            "title": "Free Shipping",
+            "text": "<p>On all orders ₹600+</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_gQWxd6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/return.svg",
+            "title": "Easy Returns",
+            "text": "<p>30-day return policy, no questions asked</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_3KAfz3",
+        "column_dHHRrm",
+        "column_eaGCUf",
+        "column_gQWxd6"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
         "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "shop_by_category_pG6bK3": {
+      "type": "shop-by-category",
+      "blocks": {
+        "collection_list_xVpLpp": {
+          "type": "collection_list",
+          "settings": {
+            "collection_image": "shopify://shop_images/Men.png",
+            "collection_name": "Men’s",
+            "collection_url": "#"
+          }
+        },
+        "collection_list_qFnAUQ": {
+          "type": "collection_list",
+          "settings": {
+            "collection_image": "shopify://shop_images/Women.png",
+            "collection_name": "Women",
+            "collection_url": ""
+          }
+        },
+        "collection_list_GD8TEH": {
+          "type": "collection_list",
+          "settings": {
+            "collection_image": "shopify://shop_images/Unisex.png",
+            "collection_name": "Unisex",
+            "collection_url": ""
+          }
+        },
+        "collection_list_ypYxRK": {
+          "type": "collection_list",
+          "settings": {
+            "collection_image": "shopify://shop_images/Kids.png",
+            "collection_name": "Kids",
+            "collection_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_list_xVpLpp",
+        "collection_list_qFnAUQ",
+        "collection_list_GD8TEH",
+        "collection_list_ypYxRK"
+      ],
+      "name": "Shop By Category",
+      "settings": {
+        "extra_class": "",
+        "background_image": "shopify://shop_images/Shop_by_Categories.png",
+        "caption": "<p>Shop by Categories</p>",
+        "heading": "<h2>Perfumes Collections</h2>"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "slider_e6bkUd",
+    "multicolumn_Ak9xCU",
+    "shop_by_category_pG6bK3"
   ]
 }
