@@ -1,0 +1,39 @@
+{
+	"name": "unf",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+    "build": "npx @tailwindcss/cli -i css/application.css -o assets/application.css.liquid -w -m",
+		"format": "prettier --write snippets/ templates/ sections/ layout/ config/ assets/",
+   "lint": "eslint . --ext .js",
+   "prepare": "husky"
+	},
+	"lint-staged": {
+		"*.js": "eslint --fix",
+   "*.{js,jsx,ts,tsx,css,md,liquid}": "prettier --write"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Jay4922/unf.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Jay4922/unf/issues"
+	},
+	"homepage": "https://github.com/Jay4922/unf#readme",
+	"description": "",
+	"devDependencies": {
+		"@eslint/js": "^9.31.0",
+		"@shopify/prettier-plugin-liquid": "^1.9.3",
+		"autoprefixer": "^10.4.21",
+		"eslint": "^9.31.0",
+		"globals": "^16.3.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
+		"postcss": "^8.5.6",
+		"prettier": "^3.6.2",
+		"tailwindcss": "^4.1.11"
+	}
+}
