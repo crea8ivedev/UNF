@@ -1,0 +1,90 @@
+<div class="{{ section.settings.extra_class }} main-fragrance-hp">
+  <div class="ctm-frag-text">
+    {% if section.settings.heading != blank %}
+      <div class="ctm-frag-head">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="ctm-frag-description">
+        {{ section.settings.description }}
+      </div>
+    {% endif %}
+
+    {% for block in section.blocks %}
+      {% if block.settings.tick_text != blank %}
+        <div class="ctm-tick-text-main">
+          {% render 'frag-tick' %}
+          <p>{{ block.settings.tick_text }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if section.settings.section_image != blank %}
+    <div class="ctm-frag-image">
+      <img src="{{ section.settings.section_image | image_url }}" width="auto" height="auto" alt="frag image">
+    </div>
+  {% endif %}
+  <div class="ctm-frag-btn">
+    <a href="{{ section.settings.button_url }}">{{ section.settings.button_heading }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Fragrance",
+  "class": "ctm-about-fragrance",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "richtext",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Button Heading",
+      "id": "button_heading"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "image_picker",
+      "label": "Section Image",
+      "id": "section_image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "repeat_text",
+      "name": "Repeat Text",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Tick Text",
+          "id": "tick_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Fragrance"
+    }
+  ]
+}
+{% endschema %}

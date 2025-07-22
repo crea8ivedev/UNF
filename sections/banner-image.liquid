@@ -1,0 +1,94 @@
+<div class="{{ section.settings.extra_class }} main-ctm-banner-image">
+  <div class="ctm-banner-text-main">
+    {% if section.settings.caption != blank %}
+    <div class="ctm-banner-caption">
+      <p>{{ section.settings.caption }}</p>
+    </div>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+    <div class="ctm-banner-head">
+      {{ section.settings.heading }}
+    </div>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+    <div class="ctm-banner-desc">
+      {{ section.settings.description }}
+    </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+    <div class="ctm-banner-btn">
+      <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+    </div>
+    {% endif %}
+
+    {% if section.settings.caption_under_text != blank %}
+    <div class="ctm-banner-caption-under">
+      <p>{{ section.settings.caption_under_text }}</p>
+    </div>
+    {% endif %}
+  </div>
+
+  {% if section.settings.banner_image != blank %}
+  <div class="ctm-banner-image">
+    <img src="{{ section.settings.banner_image | image_url }}" height="auto" width="auto" alt="banner image">
+  </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Banner Image",
+  "class": "ctm-banner-image-main",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "html",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "text",
+      "label": "Caption Under text",
+      "id": "caption_under_text"
+    },
+    {
+      "type": "image_picker",
+      "label": "Banner Image",
+      "id": "banner_image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Banner Image"
+    }
+  ]
+}
+{% endschema %}

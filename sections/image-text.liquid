@@ -1,0 +1,70 @@
+<div class="{{ section.settings.extra_class }} ctm-main-img-txt">
+  <div class="ctm-image-text">
+    {% if section.settings.caption != blank %}
+      <p>{{ section.settings.caption }}</p>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      {{ section.settings.heading }}
+    {% endif %}
+    {% if section.settings.description != blank %}
+      {{ section.settings.description }}
+    {% endif %}
+    {% if section.settings.button_text != blank %}
+      <a href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  {% if section.settings.section_image != blank %}
+    <div class="ctm-text-image">
+      <img src="{{ section.settings.section_image | image_url }}" width="auto" height="auto" alt="image with text">
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Image Text",
+  "class": "ctm-image-with-text",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Extra Class",
+      "id": "extra_class"
+    },
+    {
+      "type": "text",
+      "label": "Caption",
+      "id": "caption"
+    },
+    {
+      "type": "richtext",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "description"
+    },
+    {
+      "type": "text",
+      "label": "Button Text",
+      "id": "button_text"
+    },
+    {
+      "type": "url",
+      "label": "Button URL",
+      "id": "button_url"
+    },
+    {
+      "type": "image_picker",
+      "label": "Section Image",
+      "id": "section_image"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Image Text"
+    }
+  ]
+}
+{% endschema %}

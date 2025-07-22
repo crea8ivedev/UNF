@@ -171,13 +171,235 @@
         "extra_class": "",
         "background_image": "shopify://shop_images/Shop_by_Categories.png",
         "caption": "<p>Shop by Categories</p>",
-        "heading": "<h2>Perfumes Collections</h2>"
+        "heading": "<h2>Perfumes Collections</h2>",
+        "columns_per_row": 4
+      }
+    },
+    "about_fragrance_h6EH4a": {
+      "type": "about-fragrance",
+      "blocks": {
+        "repeat_text_DHdwgH": {
+          "type": "repeat_text",
+          "settings": {
+            "tick_text": "Long-lasting oud and oriental blend"
+          }
+        },
+        "repeat_text_JaUyzW": {
+          "type": "repeat_text",
+          "settings": {
+            "tick_text": "Exotic floral and spicy notes"
+          }
+        },
+        "repeat_text_AMmPdD": {
+          "type": "repeat_text",
+          "settings": {
+            "tick_text": "Fresh citrus with a woody undertone"
+          }
+        }
+      },
+      "block_order": [
+        "repeat_text_DHdwgH",
+        "repeat_text_JaUyzW",
+        "repeat_text_AMmPdD"
+      ],
+      "name": "About Fragrance",
+      "settings": {
+        "extra_class": "ctm-main-about-fragrance",
+        "heading": "<p>A Fragrance as Sharp as Tradition.</p>",
+        "description": "<p>Inspired by the iconic Omani dagger, Khanjar is more than a fragrance — it’s a symbol of power, masculinity, and refined taste. Handpicked oud and oriental spices deliver a scent as deep and unforgettable as the stories that shaped it.</p><p>Crafted with precision and authenticity, Khanjar perfume is more than just a scent — it’s a statement. The fragrance opens with smoky oud accords, layered with notes of saffron, cardamom, and a whisper of incense, evoking the mystique of Arabian rituals. As the heart unfolds, you’ll experience a warm blend of amber and leather, rooted in earthy base notes of sandalwood and patchouli, leaving a trail that is unforgettable, elegant, and powerful.</p>",
+        "button_heading": "Buy Now",
+        "button_url": "#",
+        "section_image": "shopify://shop_images/About_hp.png"
+      }
+    },
+    "marquee_LcrqnM": {
+      "type": "marquee",
+      "blocks": {
+        "content_ekeATe": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_7H4itK": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_cNHJXN": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_WMx9ge": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_83UnNK": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_ej6Jeb": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_cbpHHm": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_kyigTL": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        }
+      },
+      "block_order": [
+        "content_ekeATe",
+        "content_7H4itK",
+        "content_cNHJXN",
+        "content_WMx9ge",
+        "content_83UnNK",
+        "content_ej6Jeb",
+        "content_cbpHHm",
+        "content_kyigTL"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "extra_class": "",
+        "direction": "left",
+        "speed": 2
+      }
+    },
+    "marquee_EFn9jt": {
+      "type": "marquee",
+      "blocks": {
+        "content_cXxWLw": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_GGALyt": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_YPFYtp": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_zQiUYK": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_tU7yrn": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_B4hmyU": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        },
+        "content_QVXwRC": {
+          "type": "content",
+          "settings": {
+            "text": "United Notes of Fragrances"
+          }
+        },
+        "content_CbKCHj": {
+          "type": "content",
+          "settings": {
+            "text": "100% Natural Care Products"
+          }
+        }
+      },
+      "block_order": [
+        "content_cXxWLw",
+        "content_GGALyt",
+        "content_YPFYtp",
+        "content_zQiUYK",
+        "content_tU7yrn",
+        "content_B4hmyU",
+        "content_QVXwRC",
+        "content_CbKCHj"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "extra_class": "",
+        "direction": "right",
+        "speed": 2
+      }
+    },
+    "image_text_9cjaDD": {
+      "type": "image-text",
+      "name": "Image Text",
+      "settings": {
+        "extra_class": "",
+        "caption": "Our Fragrance Journey",
+        "heading": "<h2>Crafting Scents with Passion</h2>",
+        "description": "<p>United Notes of Fragrances is more than just a perfume store. it’s a bridge between the rich scent traditions of the Middle East and the refined tastes of modern fragrance lovers in the UK.Founded by a UK-based Indian entrepreneur with a deep passion for authentic luxury, we specialize in curating 100% original perfumes sourced directly from trusted distributors in Dubai the heart of Arabian fragrance heritage.</p>",
+        "button_text": "Discover Now",
+        "button_url": "",
+        "section_image": "shopify://shop_images/imagetxt.png"
+      }
+    },
+    "banner_image_79QnM7": {
+      "type": "banner-image",
+      "name": "Banner Image",
+      "settings": {
+        "extra_class": "ctm-banner-image-main",
+        "caption": "Summer Fragrance Fiesta",
+        "heading": "Get Upto <span>25% Off</span>Summer Fragrances",
+        "description": "<p>Perfect for day or night, these scents will keep you feeling fresh and invigorated all summer long. Enjoy up to 25% OFF on our handpicked summer scents perfect for long days, warm nights, and unforgettable moments.</p>",
+        "button_text": "Shop Summer Scents",
+        "button_url": "",
+        "caption_under_text": "Feel Fresh. Smell Divine. Save Big.",
+        "banner_image": "shopify://shop_images/Product_image.png"
+      }
+    },
+    "image_text_tHTi7n": {
+      "type": "image-text",
+      "name": "Image Text",
+      "settings": {
+        "extra_class": "ctm-perfect-match-main",
+        "caption": "FUN",
+        "heading": "<h2>Not Sure What to Choose? Take Our 1-Minute Scent Quiz & Discover Your Perfect Match</h2>",
+        "description": "<p>Choosing a fragrance can be overwhelming — let us help!<br/>Answer a few quick questions about your preferences, and we’ll guide you to the scent that best matches your personality, mood, and style.</p><ol><li>Do you like floral or woody scents?</li><li>Are you choosing this for daytime or evening wear?</li><li>What's your ideal vibe? Romantic, Fresh, Bold</li></ol>",
+        "button_text": "Find My Signature Scent",
+        "button_url": "",
+        "section_image": "shopify://shop_images/Mask_group.png"
       }
     }
   },
   "order": [
     "slider_e6bkUd",
     "multicolumn_Ak9xCU",
-    "shop_by_category_pG6bK3"
+    "shop_by_category_pG6bK3",
+    "about_fragrance_h6EH4a",
+    "marquee_LcrqnM",
+    "marquee_EFn9jt",
+    "image_text_9cjaDD",
+    "banner_image_79QnM7",
+    "image_text_tHTi7n"
   ]
 }
