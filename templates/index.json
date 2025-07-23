@@ -389,6 +389,21 @@
         "button_url": "",
         "section_image": "shopify://shop_images/Mask_group.png"
       }
+    },
+    "1753252349e41d47b2": {
+      "type": "apps",
+      "blocks": {
+        "instasync_instagram_feed_instasync_feed_WJtTx7": {
+          "type": "shopify://apps/instasync-instagram-feed/blocks/instasync_feed/98ab4ac6-e751-4136-9aa2-fada4b7a70e8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "instasync_instagram_feed_instasync_feed_WJtTx7"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -400,6 +415,7 @@
     "marquee_EFn9jt",
     "image_text_9cjaDD",
     "banner_image_79QnM7",
-    "image_text_tHTi7n"
+    "image_text_tHTi7n",
+    "1753252349e41d47b2"
   ]
 }
