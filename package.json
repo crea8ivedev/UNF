@@ -4,9 +4,9 @@
 	"main": "index.js",
 	"scripts": {
     "build": "npx @tailwindcss/cli -i css/application.css -o assets/application.css.liquid -w -m",
-		"format": "prettier --write snippets/ templates/ sections/ layout/ config/ assets/",
-   "lint": "eslint . --ext .js",
-   "prepare": "husky"
+	"format": "prettier --write snippets/ templates/ sections/ layout/ config/ assets/",
+   	"lint": "eslint . --ext .js",
+   	"prepare": "husky"
 	},
 	"lint-staged": {
 		"*.js": "eslint --fix",

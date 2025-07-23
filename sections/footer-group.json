@@ -11,8 +11,85 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "newsletter_HG9KGK": {
+      "type": "newsletter",
+      "blocks": {
+        "heading_8LXbPP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe now and receive 10% off your first order!",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph_hwrtzJ": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>News & updates from United Notes of Fragrances. No spam, We promise.</p>"
+          }
+        },
+        "email_form_nnn6GH": {
+          "type": "email_form",
+          "settings": {}
+        },
+        "trustpilot_n7ViWE": {
+          "type": "trustpilot",
+          "settings": {
+            "trust-btn-image": "shopify://shop_images/image_47.png",
+            "trust-btn-url": "#"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8LXbPP",
+        "paragraph_hwrtzJ",
+        "email_form_nnn6GH",
+        "trustpilot_n7ViWE"
+      ],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "footer": {
       "type": "footer",
+      "blocks": {
+        "brand_information_LyAVdM": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "link_list_CTyhG6": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Brands",
+            "menu": "footer"
+          }
+        },
+        "link_list_qMrDXn": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Categories",
+            "menu": "footer"
+          }
+        },
+        "link_list_66xRNf": {
+          "type": "link_list",
+          "settings": {
+            "heading": "USEFUL LINKS",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "brand_information_LyAVdM",
+        "link_list_CTyhG6",
+        "link_list_qMrDXn",
+        "link_list_66xRNf"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": false,
@@ -30,6 +107,7 @@
     }
   },
   "order": [
+    "newsletter_HG9KGK",
     "footer"
   ]
 }

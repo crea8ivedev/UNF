@@ -1,0 +1,120 @@
+{% assign product_tabs = product.metafields.custom.pdp_tabs.value %}
+
+{% if product_tabs and product_tabs != blank %}
+  <div class="product-tabs-section">
+    <ul class="tabs-nav">
+      {% for tab in product_tabs %}
+        <li class="tab-nav-item{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+          {{ tab.tab_heading | escape }}
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tabs-content-wrapper">
+      {% for tab in product_tabs %}
+        <div class="tab-content{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+          {% if tab.tab_image %}
+            <img
+              class="tab-img"
+              src="{{ tab.tab_image | image_url }}"
+              alt="{{ tab.tab_heading | escape }}"
+              width="auto"
+              height="auto"
+            >
+          {% endif %}
+          <div class="tab-desc">
+            {{ tab.description }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<style>
+  .product-tabs-section {
+    margin-top: 2rem;
+  }
+  .tabs-nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    border-bottom: 2px solid #e1e1e1;
+    margin-bottom: 1rem;
+  }
+  .tab-nav-item {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+    color: #555;
+    transition:
+      color 0.2s,
+      border-bottom 0.2s;
+    border-bottom: 3px solid transparent;
+  }
+  .tab-nav-item.active {
+    color: #222;
+    border-bottom: 3px solid #222;
+  }
+  .tabs-content-wrapper {
+    padding: 1rem 0;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  .tab-img {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var navItems = document.querySelectorAll('.tabs-nav .tab-nav-item');
+    var tabContents = document.querySelectorAll('.tabs-content-wrapper .tab-content');
+
+    if (!navItems.length || !tabContents.length) return;
+
+    navItems.forEach(function (nav, idx) {
+      nav.addEventListener('click', function () {
+        // Remove active from all
+        navItems.forEach(function (item) {
+          item.classList.remove('active');
+        });
+        tabContents.forEach(function (tab) {
+          tab.classList.remove('active');
+        });
+
+        // Add active to clicked
+        nav.classList.add('active');
+        tabContents[idx].classList.add('active');
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "PDP Tabbing",
+  "class": "ctm-product-tabs-main",
+  "presets": [
+    {
+      "name": "PDP Tabbing"
+    }
+  ]
+}
+{% endschema %}

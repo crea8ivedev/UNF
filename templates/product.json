@@ -12,13 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
@@ -49,38 +42,80 @@
           "type": "description",
           "settings": {}
         },
-        "share": {
-          "type": "share",
+        "ctm_icon_with_text_nVeWwb": {
+          "type": "ctm-icon-with-text",
           "settings": {
-            "share_label": "Share"
+            "icon_image": "shopify://shop_images/truckpdp.svg",
+            "text_icon": "<p>Estimate delivery times:<b>12-26 days</b>(International),<b>3-6 days</b>(United States)</p>"
+          }
+        },
+        "ctm_icon_with_text_hbX7pN": {
+          "type": "ctm-icon-with-text",
+          "settings": {
+            "icon_image": "shopify://shop_images/returnpdp.svg",
+            "text_icon": "<p>Return within <b>45 days</b> of purchase. Duties &amp; taxes are non-refundable.</p>"
           }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "price",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "ctm_icon_with_text_nVeWwb",
+        "ctm_icon_with_text_hbX7pN"
       ],
       "settings": {
+        "enable_slider": true,
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
         "media_position": "left",
-        "image_zoom": "lightbox",
-        "hide_variants": true,
+        "image_zoom": "none",
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
       }
+    },
+    "pdp_tabbing_Jww7M4": {
+      "type": "pdp-tabbing",
+      "name": "PDP Tabbing",
+      "settings": {}
+    },
+    "rich_text_e3zYzM": {
+      "type": "rich-text",
+      "blocks": {
+        "text_zpEEPN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ product.metafields.custom.pdp_bottom_description | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_zpEEPN"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "pdp_desc_repeater_MFxC3z": {
+      "type": "pdp-desc-repeater",
+      "name": "PDP Desc Repeater",
+      "settings": {}
     },
     "related-products": {
       "type": "related-products",
@@ -103,6 +138,9 @@
   },
   "order": [
     "main",
+    "pdp_tabbing_Jww7M4",
+    "rich_text_e3zYzM",
+    "pdp_desc_repeater_MFxC3z",
     "related-products"
   ]
 }

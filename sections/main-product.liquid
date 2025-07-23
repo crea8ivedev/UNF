@@ -76,7 +76,11 @@
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+        {% if section.settings.enable_slider %}
+          {% render 'ctm-product-media-gallery' %}
+        {% else %}
+          {% render 'product-media-gallery', variant_images: variant_images %}
+        {% endif %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size ==  "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -89,6 +93,18 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+              {%- when 'ctm-icon-with-text' -%}
+                {% if block.settings.text_icon != blank %}
+                  <div class="ctm-icon-with-text-main">
+                    <img
+                      src="{{ block.settings.icon_image | image_url }}"
+                      width="auto"
+                      height="auto"
+                      alt="icon with text"
+                    >
+                    {{ block.settings.text_icon }}
+                  </div>
+                {% endif %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style ==  'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style ==  'subtitle' %} subtitle{% endif %}"
@@ -935,6 +951,26 @@
           "id": "share_label",
           "label": "t:sections.main-product.blocks.share.settings.text.label",
           "default": "t:sections.main-product.blocks.share.settings.text.default"
+        }
+      ]
+    },
+    {
+      "type": "ctm-icon-with-text",
+      "name": "CTM Icon With Text",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Add Icon and Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon"
+        },
+        {
+          "type": "html",
+          "id": "text_icon",
+          "label": "Text"
         }
       ]
     },
@@ -2081,6 +2117,11 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_slider",
+      "label": "Enable slider on media gallery"
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

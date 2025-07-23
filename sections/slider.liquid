@@ -1,96 +1,88 @@
 <style>
-.ctm-slider-main {
-  position: relative;
-  height: 900px;
-}
+  .ctm-slider-main {
+    position: relative;
+    height: 900px;
+  }
 
-.ctm-slider-main .swiper {
-  height: 100%;
-}
+  .ctm-slider-main .swiper {
+    height: 100%;
+  }
+  .ctm-slider-main .swiper-wrapper {
+    height: 100%;
+  }
+  .ctm-slider-main .swiper-slide {
+    position: relative;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+  }
 
-.ctm-slider-main .swiper-wrapper {
-  height: 100%;
-}
+  .ctm-slider-main .slider-item {
+    text-align: center;
+    padding: 20px;
+  }
+  .ctm-slider-main .slider-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
 
-.swiper-slide {
-  position: relative;
-  min-height: 400px;
-  height: 900px;
-  color: #fff;
-  background-size: cover;
-  background-position: center;
-}
+  .ctm-slider-main .slider-heading {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  .ctm-slider-main .slider-description {
+    margin-top: 10px;
+    color: #333;
+  }
+  .ctm-slider-main .slider-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+  }
 
-.slider-item {
-  text-align: center;
-  padding: 20px;
-}
-
-.slider-image img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.slider-heading {
-  font-size: 2rem;
-  margin-top: 10px;
-}
-
-.slider-description {
-  margin-top: 10px;
-  color: #333;
-}
-
-.slider-button {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #000;
-  color: #fff;
-  text-decoration: none;
-}
-
-.slider-content-content-align-left,
-.slider-content-content-align-center,
-.slider-content-content-align-right {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem;
-  background: linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%);
-  z-index: 2;
-}
-
-/* Alignment modifiers */
-.slider-content-content-align-left {
-  align-items: flex-start;
-  text-align: left;
-}
-
-.slider-content-content-align-center {
-  align-items: center;
-  text-align: center;
-}
-
-.slider-content-content-align-right {
-  align-items: flex-end;
-  text-align: right;
-}
+  /* Alignment modifiers */
+  .ctm-slider-main .slider-content-content-align-left,
+  .ctm-slider-main .slider-content-content-align-center,
+  .ctm-slider-main .slider-content-content-align-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    z-index: 2;
+  }
+  .ctm-slider-main .slider-content-content-align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+  .ctm-slider-main .slider-content-content-align-center {
+    align-items: center;
+    text-align: center;
+  }
+  .ctm-slider-main .slider-content-content-align-right {
+    align-items: flex-end;
+    text-align: right;
+  }
 </style>
-
 
 <div class="ctm-slider-main {{ section.settings.extra_class }}">
   <div class="swiper">
     <div class="swiper-wrapper">
       {% for block in section.blocks %}
-        {% if block.type == "slider_content" %}
-          <div class="swiper-slide" {{ block.shopify_attributes }}
-            style="background-image: url('{{ block.settings.slider_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;">
+        {% if block.type == 'slider_content' %}
+          <div
+            class="swiper-slide"
+            {{ block.shopify_attributes }}
+            style="background-image: url('{{ block.settings.slider_image | image_url: width: 2000 }}'); background-size: cover; background-position: center;"
+          >
             <div class="slider-content-content-align-{{ block.settings.content_alignment }}">
               {% if block.settings.heading != blank %}
                 <div class="slider-heading">
@@ -118,7 +110,6 @@
   </div>
 </div>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const swiper = new Swiper('.ctm-slider-main .swiper', {
@@ -136,7 +127,6 @@
     });
   });
 </script>
-
 
 {% schema %}
 {
@@ -160,14 +150,14 @@
           "id": "slider_image"
         },
         {
-         "type": "select",
-         "id": "content_alignment",
-         "label": "Content Alignment",
-         "options": [
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content Alignment",
+          "options": [
             { "label": "Left", "value": "left" },
             { "label": "Center", "value": "center" },
             { "label": "Right", "value": "right" }
-        ],
+          ],
           "default": "center"
         },
         {

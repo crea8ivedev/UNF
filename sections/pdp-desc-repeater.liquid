@@ -1,0 +1,63 @@
+<style>
+  .custom-description-repeater {
+    margin: 2rem auto;
+    max-width: 1000px;
+    font-family: inherit;
+  }
+  .repeater__container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .repeater__block {
+    flex: 1 1 200px;
+    min-width: 220px;
+  }
+  .repeater__block h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .repeater__block ul {
+    list-style: disc;
+    padding-left: 1.2em;
+  }
+  .repeater__block li {
+    margin-bottom: 0.75em;
+  }
+  .desc-image {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  .desc-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+</style>
+<div class="custom-description-repeater">
+  {% assign pdp_repeater = product.metafields.custom.pdp_description_repeater.value %}
+  {% if pdp_repeater %}
+    <div class="repeater__container">
+      {% for block in pdp_repeater %}
+        <div class="repeater__block">
+          <h3>{{ block.headings }}</h3>
+          {{ block.list_or_description }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "PDP Desc Repeater",
+  "class": "ctm-main-pdp-desc-repeater",
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "PDP Desc Repeater"
+    }
+  ]
+}
+{% endschema %}

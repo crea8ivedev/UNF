@@ -1,0 +1,235 @@
+<style>
+  .fragrance-faq-guide__container {
+    display: flex;
+    gap: 40px;
+    background: #faf6ee;
+    border-radius: 16px;
+    padding: 40px 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .fragrance-faq-guide__image-area {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 260px;
+  }
+  .fragrance-faq-guide__image {
+    max-width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 5px 12px rgba(104, 92, 44, 0.07);
+  }
+  .fragrance-faq-guide__content-area {
+    flex: 2 1 380px;
+    min-width: 260px;
+  }
+  .fragrance-faq-guide__intro {
+    margin-bottom: 22px;
+  }
+  .fragrance-faq-guide__heading {
+    font-family: serif;
+    letter-spacing: -0.03em;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .fragrance-faq-guide__faq-list {
+    border-top: 1px solid #ece5d7;
+  }
+  .fragrance-faq-guide__faq-item {
+    border-bottom: 1px solid #ece5d7;
+  }
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 18px 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #1b1a17;
+    align-items: center;
+    transition: color 0.2s;
+  }
+  .faq-question[aria-expanded='true'] {
+    color: #966832;
+  }
+  .faq-toggle-icon {
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+  }
+  .faq-question[aria-expanded='true'] .faq-toggle-icon {
+    content: '-';
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 0;
+    margin: 0;
+    color: #6a6045;
+    font-size: 1rem;
+    line-height: 1.7;
+    transition:
+      max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.3s,
+      margin 0.3s,
+      opacity 0.3s;
+    opacity: 0;
+    will-change: max-height;
+  }
+  .faq-answer.open {
+    padding: 8px 0 18px 0;
+    margin-bottom: 10px;
+    max-height: 350px;
+    opacity: 1;
+    animation: fadeIn 0.7s;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 800px) {
+    .fragrance-faq-guide__container {
+      flex-direction: column;
+      padding: 24px 12px;
+    }
+    .fragrance-faq-guide__image {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<div class="fragrance-faq-guide__container">
+  <div class="fragrance-faq-guide__image-area">
+    {% if section.settings.faq_image != blank %}
+      <img
+        src="{{ section.settings.faq_image | image_url: width:600 }}"
+        width="auto"
+        height="auto"
+        alt="Fragrance image"
+        class="fragrance-faq-guide__image"
+      >
+    {% endif %}
+  </div>
+  <div class="fragrance-faq-guide__content-area">
+    <div class="fragrance-faq-guide__intro">
+      {{ section.settings.intro_text }}
+      <h2 class="fragrance-faq-guide__heading">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="fragrance-faq-guide__faq-list" id="faqList">
+      {% for block in section.blocks %}
+        <div class="fragrance-faq-guide__faq-item">
+          <button
+            class="faq-question"
+            aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="answer{{ forloop.index }}"
+          >
+            <span>{{ block.settings.question }}</span>
+            <span class="faq-toggle-icon">
+              {%- if forloop.first %}−{% else %}+{% endif -%}
+            </span>
+          </button>
+          <div
+            id="answer{{ forloop.index }}"
+            class="faq-answer{% if forloop.first %} open{% endif %}"
+            {% unless forloop.first %}
+              hidden
+            {% endunless %}
+          >
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const faqItems = document.querySelectorAll('.fragrance-faq-guide__faq-item');
+    faqItems.forEach(function (item, idx) {
+      const btn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      btn.addEventListener('click', function () {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all
+        faqItems.forEach(function (otherItem) {
+          const otherBtn = otherItem.querySelector('.faq-question');
+          const otherAnswer = otherItem.querySelector('.faq-answer');
+          otherBtn.setAttribute('aria-expanded', 'false');
+          otherBtn.querySelector('.faq-toggle-icon').textContent = '+';
+          otherAnswer.classList.remove('open');
+          otherAnswer.setAttribute('hidden', '');
+        });
+
+        // If not open yet, open this
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.querySelector('.faq-toggle-icon').textContent = '−';
+          answer.classList.add('open');
+          answer.removeAttribute('hidden');
+        }
+      });
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "Fragrance FAQ & Guide",
+  "tag": "section",
+  "class": "fragrance-faq-guide",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "faq_image",
+      "label": "Section Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Introductory Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_block",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fragrance FAQ & Guide",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

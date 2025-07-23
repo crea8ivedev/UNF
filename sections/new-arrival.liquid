@@ -1,0 +1,369 @@
+{%- style -%}
+  .new-arrivals-section {
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+  .new-arrivals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: {{ section.settings.header_margin_bottom }}px;
+  }
+  .new-arrivals-title {
+    font-size: {{ section.settings.title_font_size }}px;
+    color: {{ section.settings.title_color }};
+    font-weight: {{ section.settings.title_font_weight }};
+    margin: 0;
+  }
+  .new-arrivals-subtitle {
+    font-size: {{ section.settings.subtitle_font_size }}px;
+    color: {{ section.settings.subtitle_color }};
+    margin: {{ section.settings.subtitle_margin_top }}px 0 0;
+  }
+  .new-arrivals-view-all {
+    font-size: {{ section.settings.view_all_font_size }}px;
+    color: {{ section.settings.view_all_color }};
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .new-arrivals-view-all:hover {
+    color: {{ section.settings.view_all_hover_color }};
+  }
+  .new-arrivals-filters {
+    display: flex;
+    gap: 15px;
+    margin-bottom: {{ section.settings.filters_margin_bottom }}px;
+    flex-wrap: wrap;
+  }
+  .new-arrivals-filter {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: {{ section.settings.filter_background }};
+    color: {{ section.settings.filter_color }};
+    cursor: pointer;
+    font-size: {{ section.settings.filter_font_size }}px;
+    transition: all 0.3s ease;
+  }
+  .new-arrivals-filter:hover,
+  .new-arrivals-filter.active {
+    background: {{ section.settings.filter_active_background }};
+    color: {{ section.settings.filter_active_color }};
+  }
+  .new-arrivals-product {
+    height: 100%;
+  }
+  .swiper-slide {
+    height: auto;
+  }
+  .new-arrivals-product-title {
+    font-size: {{ section.settings.product_title_font_size }}px;
+    margin: 10px 0 5px;
+    color: {{ section.settings.product_title_color }};
+  }
+  .new-arrivals-product-price {
+    font-size: {{ section.settings.product_price_font_size }}px;
+    color: {{ section.settings.product_price_color }};
+    margin-bottom: 10px;
+  }
+  .new-arrivals-buy-now {
+    display: inline-block;
+    padding: 10px 20px;
+    background: {{ section.settings.button_background }};
+    color: {{ section.settings.button_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.button_border_radius }}px;
+    font-size: {{ section.settings.button_font_size }}px;
+    transition: all 0.3s ease;
+  }
+  .new-arrivals-buy-now:hover {
+    background: {{ section.settings.button_hover_background }};
+    color: {{ section.settings.button_hover_color }};
+    transform: translateY(-2px);
+  }
+{%- endstyle -%}
+
+<div class="new-arrivals-section">
+  <div class="page-width">
+    <div class="new-arrivals-header">
+      <div>
+        <h2 class="new-arrivals-title">{{ section.settings.title }}</h2>
+        {% if section.settings.subtitle != blank %}
+          <p class="new-arrivals-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.show_view_all %}
+        <a href="{{ section.settings.view_all_link }}" class="new-arrivals-view-all">
+          {{ section.settings.view_all_text }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% if section.settings.show_filters %}
+      <div class="new-arrivals-filters">
+        {% for block in section.blocks %}
+          {% if block.type == 'filter' %}
+            {% assign collection = collections[block.settings.collection] %}
+            <div
+              class="new-arrivals-filter {% if forloop.first %}active{% endif %}"
+              data-collection="{{ collection.handle }}"
+            >
+              {{ block.settings.filter_label | default: collection.title }}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="swiper new-arrivals-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          {% if block.type == 'filter' %}
+            {% assign collection = collections[block.settings.collection] %}
+            {% for product in collection.products limit: section.settings.products_to_show %}
+              <div
+                class="swiper-slide"
+                data-collection="{{ collection.handle }}"
+                {% unless forloop.parentloop.first %}
+                  style="display: none;"
+                {% endunless %}
+              >
+                <div class="new-arrivals-product">
+                  <a href="{{ product.url }}">
+                    {% if product.featured_image %}
+                      <div style="padding-top: 100%; position: relative;">
+                        {{
+                          product.featured_image
+                          | image_url: width: 400
+                          | image_tag: loading: 'lazy', class: 'absolute top-0 left-0 w-full h-full object-cover'
+                        }}
+                      </div>
+                    {% endif %}
+                    <h3 class="new-arrivals-product-title">{{ product.title }}</h3>
+                    <div class="new-arrivals-product-price">{{ product.price | money }}</div>
+                  </a>
+                  <a href="{{ product.url }}" class="new-arrivals-buy-now">
+                    {{ section.settings.button_text }}
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Swiper
+    const swiper = new Swiper('.new-arrivals-swiper', {
+      slidesPerView: {{ section.settings.columns_mobile }},
+      spaceBetween: 20,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        750: {
+          slidesPerView: {{ section.settings.columns_desktop }},
+          spaceBetween: 30
+        }
+      }
+    });
+
+    // Filter functionality
+    const filters = document.querySelectorAll('.new-arrivals-filter');
+    const slides = document.querySelectorAll('.swiper-slide');
+
+    filters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        // Update active filter
+        filters.forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+
+        // Get selected collection handle
+        const collectionHandle = this.dataset.collection;
+
+        // Show/hide slides
+        slides.forEach(slide => {
+          if (slide.dataset.collection === collectionHandle) {
+            slide.style.display = '';
+          } else {
+            slide.style.display = 'none';
+          }
+        });
+
+        // Update Swiper
+        swiper.update();
+        swiper.slideTo(0); // Reset to first slide
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "New Arrivals",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "NEW ARRIVALS"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Discover the Latest Drops"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View All' link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filters",
+      "label": "Show filters",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Products to show per collection"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "label": "Number of columns on mobile"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "header",
+      "content": "Section padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "label": "Padding top (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "Padding right (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 30,
+      "label": "Padding bottom (px)"
+    },
+    {
+      "type": "range",
+      "id": "padding_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "label": "Padding left (px)"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 20,
+      "label": "Header margin bottom (px)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter",
+      "name": "Collection Filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "filter_label",
+          "label": "Filter label",
+          "info": "Leave empty to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Arrivals"
+    }
+  ]
+}
+{% endschema %}

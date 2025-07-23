@@ -350,6 +350,64 @@
         "speed": 2
       }
     },
+    "new_arrival_mzhWhe": {
+      "type": "new-arrival",
+      "blocks": {
+        "filter_4BVq89": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "All",
+            "collection": "frontpage"
+          }
+        },
+        "filter_MgrGWi": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "DJsdg",
+            "collection": "drinkware"
+          }
+        },
+        "filter_YjJUnf": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "sgsfgfg",
+            "collection": "coffee"
+          }
+        },
+        "filter_mVtnPh": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "Test",
+            "collection": "test"
+          }
+        }
+      },
+      "block_order": [
+        "filter_4BVq89",
+        "filter_MgrGWi",
+        "filter_YjJUnf",
+        "filter_mVtnPh"
+      ],
+      "name": "New Arrivals",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "subtitle": "Discover the Latest Drops",
+        "show_view_all": true,
+        "view_all_text": "View All",
+        "view_all_link": "",
+        "show_filters": true,
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "button_text": "Buy Now",
+        "padding_top": 30,
+        "padding_right": 0,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "background_color": "#ffffff",
+        "header_margin_bottom": 20
+      }
+    },
     "image_text_9cjaDD": {
       "type": "image-text",
       "name": "Image Text",
@@ -390,16 +448,98 @@
         "section_image": "shopify://shop_images/Mask_group.png"
       }
     },
-    "1753252349e41d47b2": {
+    "featured_blog_QbHk9R": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "news",
+        "post_limit": 20,
+        "caption": "",
+        "heading": "<p>Blog posts</p>",
+        "button_text": "",
+        "button_url": "",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "faq_i3cn7y": {
+      "type": "faq",
+      "blocks": {
+        "faq_block_nMGpG4": {
+          "type": "faq_block",
+          "settings": {
+            "question": "Are your perfumes authentic?",
+            "answer": "<p>We only offer 100% authentic perfumes sourced directly from trusted distributors. Each fragrance reflects the heritage and craftsmanship of genuine luxury.</p>"
+          }
+        },
+        "faq_block_gDkDKz": {
+          "type": "faq_block",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Lorem Ipsum</p>"
+          }
+        },
+        "faq_block_pFhnJQ": {
+          "type": "faq_block",
+          "settings": {
+            "question": "Where do you ship from?",
+            "answer": "<p>Lorem Ipsum</p>"
+          }
+        },
+        "faq_block_x8CKjw": {
+          "type": "faq_block",
+          "settings": {
+            "question": "Can I return a fragrance if I don’t like it?",
+            "answer": "<p>Lorem Ipsum</p>"
+          }
+        },
+        "faq_block_tfxWwU": {
+          "type": "faq_block",
+          "settings": {
+            "question": "What is the best way to make perfume last longer?",
+            "answer": "<p>Lorem Ipsum</p>"
+          }
+        },
+        "faq_block_7KW9Cz": {
+          "type": "faq_block",
+          "settings": {
+            "question": "How do I choose the right perfume for me?",
+            "answer": "<p>Lorem Ipsum</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_block_nMGpG4",
+        "faq_block_gDkDKz",
+        "faq_block_pFhnJQ",
+        "faq_block_x8CKjw",
+        "faq_block_tfxWwU",
+        "faq_block_7KW9Cz"
+      ],
+      "name": "Fragrance FAQ & Guide",
+      "settings": {
+        "faq_image": "shopify://shop_images/image_49.png",
+        "heading": "Your Fragrance Guide",
+        "intro_text": "<p>FAQ</p>"
+      }
+    },
+    "175325449306165089": {
       "type": "apps",
       "blocks": {
-        "instasync_instagram_feed_instasync_feed_WJtTx7": {
+        "instasync_instagram_feed_instasync_feed_ynraz7": {
           "type": "shopify://apps/instasync-instagram-feed/blocks/instasync_feed/98ab4ac6-e751-4136-9aa2-fada4b7a70e8",
           "settings": {}
         }
       },
       "block_order": [
-        "instasync_instagram_feed_instasync_feed_WJtTx7"
+        "instasync_instagram_feed_instasync_feed_ynraz7"
       ],
       "settings": {
         "include_margins": true
@@ -413,9 +553,12 @@
     "about_fragrance_h6EH4a",
     "marquee_LcrqnM",
     "marquee_EFn9jt",
+    "new_arrival_mzhWhe",
     "image_text_9cjaDD",
     "banner_image_79QnM7",
     "image_text_tHTi7n",
-    "1753252349e41d47b2"
+    "featured_blog_QbHk9R",
+    "faq_i3cn7y",
+    "175325449306165089"
   ]
 }

@@ -115,6 +115,19 @@
               {%- endif -%}
             {% endform %}
           </div>
+        {% when 'trustpilot' %}
+          {% if block.settings['trust-btn-image'] != blank %}
+            <div class="trustpilot-btn" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.trust-btn-url }}">
+                <img
+                  src="{{ block.settings.trust-btn-image | image_url }}"
+                  width="auto"
+                  height="auto"
+                  alt="Trustpilot Button"
+                >
+              </a>
+            </div>
+          {% endif %}
       {%- endcase -%}
     {%- endfor -%}
   </div>
@@ -222,6 +235,23 @@
           "id": "text",
           "default": "t:sections.newsletter.blocks.paragraph.settings.paragraph.default",
           "label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
+        }
+      ]
+    },
+    {
+      "type": "trustpilot",
+      "name": "Trustpilot",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "trust-btn-image",
+          "label": "Trustpilot BTN Image"
+        },
+        {
+          "type": "url",
+          "id": "trust-btn-url",
+          "label": "Trustpilot BTN URL"
         }
       ]
     },
