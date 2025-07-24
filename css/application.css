@@ -1,30 +1,21 @@
 @import "tailwindcss";
 @import "./custom.css";
+
 @theme {
   /* Color */
   --color-white: #ffffff;
   --color-black: #000000;
-  --color-black-12: #121212;
-  --color-light-blue: #67c9d7;
-  --color-dark-blue: #1c4f72;
-  --color-dark-red: #8d3840;
-  --color-olive-green: #86aa70;
-  --color-off-white-100: #f6f2e5;
-  --color-off-white-200: #fff4e9;
-  --color-gray-100: #868582;
-  --color-gray-200: #d9d9d9;
-  --color-orange: #f1885f;
-  --color-teal: #378e97;
+  --color-primary-red: #ee3424;
+  --color-dark-red: #8a0b20;
+  --color-grey: #8e8e8e;
+  --color-dark-grey: #c6c6c6;
+  --color-light-grey: #d0d5dd;
+  --color-cream: #fefbf6;
+  --color-dark-line: #ececec;
 
   /* Font-family */
-  --font-body: Retroyal-medium, sans-serif;
-  --font-heading: Swell, sans-serif;
-  --font-open-sans: open-sans, sans-serif;
-  --font-open-sans-bold: open-sans-bold, sans-serif;
-  --font-retroyal-300: Retroyal-light, sans-serif;
-  --font-retroyal-400: Retroyal-regular, sans-serif;
-  --font-retroyal-500: Retroyal-medium, sans-serif;
-  --font-retroyal-600: Retroyal-semibold, sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-heading: Constructio_Grotesk, sans-serif;
 
   /* font-weight */
   --font-weight-light: 300;
@@ -41,10 +32,10 @@
   --flex-none: none;
 
   /* shadow */
-  --shadow-xl: 0px 4px 4px 0px #00000017;
+  --shadow-xl: 0px 4px 25.9px 0px rgba(0, 0, 0, 0.05);
+  --text-shadow: 0px 4px 4px 0px #00000040;
 
   /* padding - margin - height - width - gap */
-  --spacing-50-15: calc(50% - 15px);
   --spacing-95p: 95%;
   --spacing-0: 0px;
   --spacing-4: 4px;
@@ -72,7 +63,13 @@
   --spacing-90: 90px;
   --spacing-100: 100px;
   --spacing-120: 120px;
+  --spacing-90p: 90%;
+  --spacing-100p: 100%;
   --spacing-101p: 101%;
+  --spacing-110p: 110.01%;
+  --spacing-120p: 120%;
+  --spacing-130p: 130%;
+  --spacing-140p: 140%;
 
   /* font-size */
   --text-12: 12px;
@@ -80,29 +77,42 @@
   --text-16: 16px;
   --text-18: 18px;
   --text-20: 20px;
+  --text-22: 22px;
   --text-24: 24px;
   --text-26: 26px;
   --text-28: 28px;
   --text-30: 30px;
   --text-32: 32px;
+  --text-35: 35px;
   --text-36: 36px;
   --text-40: 40px;
+  --text-42: 42px;
   --text-45: 45px;
+  --text-46: 46px;
+  --text-48: 48px;
   --text-50: 50px;
   --text-60: 60px;
+  --text-66: 66px;
   --text-70: 70px;
   --text-80: 80px;
+  --text-82: 82px;
   --text-90: 90px;
   --text-100: 100px;
+  --text-110: 110px;
   --text-120: 120px;
+  --text-140: 140px;
+  --text-160: 160px;
 
   /* border-radius */
   --radius-4: 4px;
   --radius-5: 5px;
   --radius-10: 10px;
+  --radius-15: 15px;
   --radius-20: 20px;
+  --radius-115: 115px;
 
   --breakpoint-xxsscreen1: 374px;
+  --breakpoint-xxsmall: 320px;
   --breakpoint-xsscreen: 370px;
   --breakpoint-xsscreen2: 400px;
   --breakpoint-xsscreen3: 401px;
@@ -117,9 +127,11 @@
   --breakpoint-mdscreen4: 750px;
   --breakpoint-mdscreen: 767px;
   --breakpoint-mdscreen6: 768px;
+  --breakpoint-mdscreen8: 769px;
   --breakpoint-mdscreen1: 989px;
   --breakpoint-mdscreen3: 991px;
   --breakpoint-mdscreen2: 990px;
+  --breakpoint-mdscreen7: 850px;
 
   /* Laptop Screens (Smallest to Largest) */
   --breakpoint-lgscreen: 1023px;
@@ -144,4 +156,103 @@
   --breakpoint-extlarge_desktop_2: 1920px;
   --breakpoint-extlarge_desktop: 1921px;
   --breakpoint-extlarge_desktop_1: 2000px;
+  --breakpoint-extlarge_desktop_2: 2559px;
+}
+@layer base {
+  ::before,
+  ::after {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply !p-0 !m-0 !font-body text-18 leading-32 text-black antialiased bg-white relative;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    @apply transition-all duration-300 ease-in-out cursor-pointer font-body no-underline;
+  }
+
+  a p {
+    @apply lgscreen:text-18 lgscreen:leading-26 text-16 leading-24 font-body font-regular;
+  }
+
+  p {
+    @apply lgscreen:text-18 lgscreen:leading-26 text-16 leading-24 font-body font-regular;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply m-0 !outline-[0] !shadow-none font-heading normal-case;
+  }
+
+  h1,
+  .h1,
+  .title-h1,
+  h2.h1,
+  h1.h2 {
+    @apply midlarge_desktop:text-60 midlarge_desktop:leading-[68px] lgscreen2:text-50 lgscreen2:leading-[56px] mdscreen:text-36 mdscreen:leading-[42px] text-24 leading-30;
+  }
+
+  h2,
+  .h2,
+  h1.h2,
+  h2.h1 {
+    @apply midlarge_desktop:text-40 midlarge_desktop:leading-[46px] lgscreen2:text-[30px] lgscreen2:leading-[36px] mdscreen:text-[28px] mdscreen:leading-[32px] text-24 leading-30;
+  }
+
+  h3,
+  .h3,
+  h2.h3 {
+    @apply lgscreen2:text-30 lgscreen2:leading-[38px] smscreen:text-[28px] smscreen:leading-[32px] text-22 leading-24;
+  }
+
+  h4,
+  .h4,
+  h1.h4 {
+    @apply lgscreen2:text-22 lgscreen2:leading-26 text-20 leading-26;
+  }
+
+  h5,
+  .h5,
+  h1.h5 {
+    @apply mdscreen:text-20 mdscreen:leading-26 text-18 leading-24;
+  }
+
+  h6,
+  .h6,
+  h2.h6 {
+    @apply text-16 leading-100p;
+  }
+
+  .container_fluid,
+  .page-width,
+  .ctm-collection .page-width,
+  .shopify-policy__container {
+    @apply !px-16 mdscreen6:!px-50 small_desktop:!px-80 desktop:!px-100 !max-w-full;
+  }
+  img {
+    @apply overflow-hidden select-none;
+  }
+
+  .img-fluid-cover {
+    @apply w-full h-full object-cover;
+  }
+
+  .img-fluid-none {
+    @apply w-full h-full object-none;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    @apply !content-[none];
+  }
 }

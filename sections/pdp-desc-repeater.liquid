@@ -34,7 +34,8 @@
     border-radius: 10px;
   }
 </style>
-<div class="custom-description-repeater">
+
+<div class="custom-description-repeater container_fluid">
   {% assign pdp_repeater = product.metafields.custom.pdp_description_repeater.value %}
   {% if pdp_repeater %}
     <div class="repeater__container">

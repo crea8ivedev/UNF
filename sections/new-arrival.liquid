@@ -1,88 +1,258 @@
-{%- style -%}
+<!-- Swiper CSS + JS CDN -->
+<style>
   .new-arrivals-section {
-    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_right }}px {{ section.settings.padding_bottom }}px {{ section.settings.padding_left }}px;
-    background-color: {{ section.settings.background_color }};
+    background: #fff;
+    padding: 40px 0;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   }
-  .new-arrivals-header {
+  /* ... keep all your CSS as-is ... */
+  .new-arrivals-section .page-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .new-arrivals-section .new-arrivals-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: {{ section.settings.header_margin_bottom }}px;
+    margin-bottom: 28px;
   }
-  .new-arrivals-title {
-    font-size: {{ section.settings.title_font_size }}px;
-    color: {{ section.settings.title_color }};
-    font-weight: {{ section.settings.title_font_weight }};
-    margin: 0;
+  .new-arrivals-section .new-arrivals-title {
+    font-size: 2.08rem;
+    color: #1c1c1c;
+    font-weight: 700;
+    margin-bottom: 0;
+    letter-spacing: -0.5px;
   }
-  .new-arrivals-subtitle {
-    font-size: {{ section.settings.subtitle_font_size }}px;
-    color: {{ section.settings.subtitle_color }};
-    margin: {{ section.settings.subtitle_margin_top }}px 0 0;
+  .new-arrivals-section .new-arrivals-subtitle {
+    color: #a89b8b;
+    margin-top: 8px;
+    font-size: 1.03rem;
   }
-  .new-arrivals-view-all {
-    font-size: {{ section.settings.view_all_font_size }}px;
-    color: {{ section.settings.view_all_color }};
+  .new-arrivals-section .new-arrivals-view-all {
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+    background: #8b6b3f;
+    padding: 10px 26px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition:
+      background 0.18s,
+      color 0.18s;
+    border: 0;
   }
-  .new-arrivals-view-all:hover {
-    color: {{ section.settings.view_all_hover_color }};
+  .new-arrivals-section .new-arrivals-view-all:hover {
+    background: #cba66b;
+    color: #1c1c1c;
   }
-  .new-arrivals-filters {
+  .new-arrivals-section .new-arrivals-filters {
     display: flex;
-    gap: 15px;
-    margin-bottom: {{ section.settings.filters_margin_bottom }}px;
+    gap: 16px;
     flex-wrap: wrap;
+    margin-bottom: 34px;
   }
-  .new-arrivals-filter {
-    padding: 8px 16px;
-    border-radius: 20px;
-    background: {{ section.settings.filter_background }};
-    color: {{ section.settings.filter_color }};
+  .new-arrivals-section .new-arrivals-filter {
+    padding: 8.5px 22px;
+    font-size: 1.02rem;
+    border-radius: 22px;
+    background: #f2efe7;
+    color: #8b6b3f;
     cursor: pointer;
-    font-size: {{ section.settings.filter_font_size }}px;
-    transition: all 0.3s ease;
+    border: none;
+    transition:
+      background 0.25s,
+      color 0.25s;
+    font-weight: 500;
+    position: relative;
+    outline: none;
   }
-  .new-arrivals-filter:hover,
-  .new-arrivals-filter.active {
-    background: {{ section.settings.filter_active_background }};
-    color: {{ section.settings.filter_active_color }};
+  .new-arrivals-section .new-arrivals-filter:hover,
+  .new-arrivals-section .new-arrivals-filter.active {
+    background: #8b6b3f;
+    color: #fff;
   }
-  .new-arrivals-product {
+  .new-arrivals-section .new-arrivals-clear-filter {
+    padding: 8.5px 22px;
+    border-radius: 22px;
+    background: transparent;
+    color: #a89b8b;
+    border: 1.5px solid #a89b8b;
+    cursor: pointer;
+    font-size: 1.02rem;
+    font-weight: 500;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      border-color 0.2s;
+  }
+  .new-arrivals-section .new-arrivals-clear-filter:hover {
+    background: #8b6b3f;
+    color: #fff;
+    border-color: #8b6b3f;
+  }
+  .new-arrivals-section .new-arrivals-main-row {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .new-arrivals-section .new-arrivals-banner {
+    flex: 0 0 auto;
+    min-width: 290px;
+    max-width: 340px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .new-arrivals-section .banner-img img {
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 2px 20px rgba(170, 146, 94, 0.14);
+    display: block;
+  }
+  .new-arrivals-section .banner-text {
+    font-size: 1.38rem;
+    color: #362c13;
+    max-width: 600px;
+    font-weight: 600;
+    line-height: 1.44;
+    letter-spacing: 0.0125em;
+    margin-top: 14px;
+  }
+  /* Swiper Container Fixes */
+  .new-arrivals-section .new-arrivals-swiper {
+    flex: 1 1 0;
+    min-width: 0;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Add overflow hidden */
+  }
+  .new-arrivals-section .swiper {
+    width: 100%;
+    padding: 5px 0; /* Add slight padding for shadow visibility */
+  }
+  .new-arrivals-section .swiper-wrapper {
+    display: flex;
+    transition-timing-function: linear; /* Smoother sliding */
+  }
+  .new-arrivals-section .swiper-slide {
+    flex: 0 0 auto;
+    width: calc(50% - 11px);
+    background: #f8f5ef;
+    border-radius: 20px;
+    padding: 24px 22px 20px 22px;
+    box-shadow: 0 6px 18px rgba(183, 156, 94, 0.11);
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+  }
+  @media (min-width: 750px) {
+    .new-arrivals-section .swiper-slide {
+      width: calc(33.333% - 15px);
+    }
+  }
+  .new-arrivals-section .swiper-slide:last-child {
+    margin-right: 0 !important;
+  }
+  /* Product Styles */
+  .new-arrivals-section .new-arrivals-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
   }
-  .swiper-slide {
-    height: auto;
-  }
-  .new-arrivals-product-title {
-    font-size: {{ section.settings.product_title_font_size }}px;
-    margin: 10px 0 5px;
-    color: {{ section.settings.product_title_color }};
-  }
-  .new-arrivals-product-price {
-    font-size: {{ section.settings.product_price_font_size }}px;
-    color: {{ section.settings.product_price_color }};
-    margin-bottom: 10px;
-  }
-  .new-arrivals-buy-now {
-    display: inline-block;
-    padding: 10px 20px;
-    background: {{ section.settings.button_background }};
-    color: {{ section.settings.button_color }};
+  .new-arrivals-section .new-arrivals-product a {
     text-decoration: none;
-    border-radius: {{ section.settings.button_border_radius }}px;
-    font-size: {{ section.settings.button_font_size }}px;
-    transition: all 0.3s ease;
+    color: inherit;
   }
-  .new-arrivals-buy-now:hover {
-    background: {{ section.settings.button_hover_background }};
-    color: {{ section.settings.button_hover_color }};
-    transform: translateY(-2px);
+  .new-arrivals-section .new-arrivals-product img {
+    width: 100%;
+    max-width: 152px;
+    aspect-ratio: 1/1.13;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 0 auto 14px auto;
   }
-{%- endstyle -%}
+  .new-arrivals-section .new-arrivals-product-title {
+    color: #2c1708;
+    font-size: 1.11rem;
+    font-weight: 700;
+    margin: 12px 0 5px 0;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+  .new-arrivals-section .new-arrivals-product-price {
+    color: #8b6b3f;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .new-arrivals-section .new-arrivals-product-price s {
+    color: #baa264;
+    font-size: 1rem;
+    margin-right: 6px;
+    font-weight: 400;
+  }
+  .new-arrivals-section .new-arrivals-buy-now {
+    display: inline-block;
+    background: #8b6b3f;
+    color: #fff;
+    font-size: 1.02rem;
+    padding: 10px 35px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 6px;
+    box-shadow: 0 1.5px 8px rgba(203, 166, 107, 0.1);
+    cursor: pointer;
+    transition:
+      background 0.18s,
+      color 0.14s,
+      transform 0.18s;
+  }
+  .new-arrivals-section .new-arrivals-buy-now:hover {
+    background: #cba66b;
+    color: #1c1c1c;
+    transform: translateY(-2.5px);
+  }
+  /* Navigation Buttons */
+  .new-arrivals-section .swiper-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 24px;
+  }
+  .new-arrivals-section .swiper-button-prev,
+  .swiper-button-next {
+    position: static;
+    background: #fff;
+    border: 2px solid #cba66b;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #cba66b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .new-arrivals-section .swiper-button-prev:hover,
+  .new-arrivals-section .swiper-button-next:hover {
+    background: #cba66b;
+    color: #fff;
+  }
+  .new-arrivals-section .swiper-button-next[style*='none'],
+  .new-arrivals-section .swiper-button-prev[style*='none'] {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
 
-<div class="new-arrivals-section">
+<div class="new-arrivals-section" data-section-id="{{ section.id }}">
   <div class="page-width">
     <div class="new-arrivals-header">
       <div>
@@ -111,94 +281,199 @@
             </div>
           {% endif %}
         {% endfor %}
+        <button class="new-arrivals-clear-filter">
+          {{ section.settings.clear_filter_text }}
+        </button>
       </div>
     {% endif %}
 
-    <div class="swiper new-arrivals-swiper">
-      <div class="swiper-wrapper">
-        {% for block in section.blocks %}
-          {% if block.type == 'filter' %}
-            {% assign collection = collections[block.settings.collection] %}
-            {% for product in collection.products limit: section.settings.products_to_show %}
-              <div
-                class="swiper-slide"
-                data-collection="{{ collection.handle }}"
-                {% unless forloop.parentloop.first %}
-                  style="display: none;"
-                {% endunless %}
+    <div class="new-arrivals-main-row">
+      {% if section.settings.banner_image != blank %}
+        <div class="new-arrivals-banner">
+          {% if section.settings.banner_image != blank %}
+            <div class="banner-img">
+              <img
+                src="{{ section.settings.banner_image | image_url: width: 800 }}"
+                alt="Banner"
+                loading="lazy"
+                width="auto"
+                height="auto"
               >
-                <div class="new-arrivals-product">
-                  <a href="{{ product.url }}">
-                    {% if product.featured_image %}
-                      <div style="padding-top: 100%; position: relative;">
-                        {{
-                          product.featured_image
-                          | image_url: width: 400
-                          | image_tag: loading: 'lazy', class: 'absolute top-0 left-0 w-full h-full object-cover'
-                        }}
-                      </div>
-                    {% endif %}
-                    <h3 class="new-arrivals-product-title">{{ product.title }}</h3>
-                    <div class="new-arrivals-product-price">{{ product.price | money }}</div>
-                  </a>
-                  <a href="{{ product.url }}" class="new-arrivals-buy-now">
-                    {{ section.settings.button_text }}
-                  </a>
-                </div>
-              </div>
-            {% endfor %}
+            </div>
           {% endif %}
-        {% endfor %}
+          {% if section.settings.banner_caption != blank %}
+            <div class="banner-caption">
+              <p>{{ section.settings.banner_caption }}</p>
+            </div>
+          {% endif %}
+          {% if section.settings.banner_heading != blank %}
+            <div class="banner-head">
+              {{ section.settings.banner_heading }}
+            </div>
+          {% endif %}
+          {% if section.settings.banner_btn_text != blank %}
+            <div class="banner-btn">
+              <a href="{{ section.settings.banner_btn_url }}"> {{ section.settings.banner_btn_text }}</a>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="new-arrivals-swiper swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'filter' %}
+              {% assign collection = collections[block.settings.collection] %}
+              {% for product in collection.products %}
+                <div
+                  class="swiper-slide"
+                  data-filter="{{ forloop.parentloop.index0 }}"
+                  data-collection="{{ collection.handle }}"
+                  {% unless forloop.parentloop.first %}
+                    style="display: none;"
+                  {% endunless %}
+                >
+                  <div class="new-arrivals-product">
+                    <a href="{{ product.url }}">
+                      {% if product.featured_image %}
+                        <img
+                          src="{{ product.featured_image | image_url: width: 400 }}"
+                          alt="{{ product.title | escape }}"
+                          loading="lazy"
+                          height="auto"
+                          width="auto"
+                        >
+                      {% endif %}
+                      <h3 class="new-arrivals-product-title">{{ product.title }}</h3>
+                      <div class="new-arrivals-product-price">
+                        {% if product.compare_at_price > product.price %}
+                          <s>{{ product.compare_at_price | money }}</s>
+                        {% endif %}
+                        {{ product.price | money }}
+                      </div>
+                    </a>
+                    <a href="{{ product.url }}" class="new-arrivals-buy-now">
+                      {{ section.settings.button_text }}
+                    </a>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <!-- Swiper Arrows below -->
+        <div class="swiper-buttons-wrapper">
+          <div class="swiper-button-prev">
+            <svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="swiper-button-next">
+            <svg width="14" height="14" viewBox="0 0 24 24">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
       </div>
-      <div class="swiper-pagination"></div>
     </div>
   </div>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Swiper
-    const swiper = new Swiper('.new-arrivals-swiper', {
-      slidesPerView: {{ section.settings.columns_mobile }},
-      spaceBetween: 20,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        750: {
-          slidesPerView: {{ section.settings.columns_desktop }},
-          spaceBetween: 30
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.new-arrivals-section').forEach(function (arrivalsSection) {
+      const swiperContainer = arrivalsSection.querySelector('.new-arrivals-swiper');
+      if (!swiperContainer) return;
+
+      const nextButton = arrivalsSection.querySelector('.swiper-button-next');
+      const prevButton = arrivalsSection.querySelector('.swiper-button-prev');
+      const slides = arrivalsSection.querySelectorAll('.swiper-slide');
+      const filters = arrivalsSection.querySelectorAll('.new-arrivals-filter');
+      const clearBtn = arrivalsSection.querySelector('.new-arrivals-clear-filter');
+
+      // Swiper instance
+      const swiper = new Swiper(swiperContainer, {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        navigation: {
+          nextEl: nextButton,
+          prevEl: prevButton,
+        },
+        breakpoints: {
+          750: {
+            spaceBetween: 15,
+          },
+        },
+        watchOverflow: true,
+        resistanceRatio: 0,
+        slideToClickedSlide: false,
+        followFinger: false,
+        threshold: 10,
+      });
+
+      function updateNavButtons() {
+        const visibleSlides = Array.from(slides).filter((slide) => slide.style.display !== 'none');
+        const slideWidth = visibleSlides[0]?.offsetWidth || 0;
+        const slidesPerView = Math.floor(swiper.width / (slideWidth + swiper.params.spaceBetween));
+        if (visibleSlides.length <= slidesPerView) {
+          nextButton.style.display = 'none';
+          prevButton.style.display = 'none';
+        } else {
+          nextButton.style.display = 'flex';
+          prevButton.style.display = 'flex';
+          prevButton.style.opacity = swiper.isBeginning ? '0.5' : '1';
+          prevButton.style.pointerEvents = swiper.isBeginning ? 'none' : 'auto';
+          nextButton.style.opacity = swiper.isEnd ? '0.5' : '1';
+          nextButton.style.pointerEvents = swiper.isEnd ? 'none' : 'auto';
         }
       }
-    });
 
-    // Filter functionality
-    const filters = document.querySelectorAll('.new-arrivals-filter');
-    const slides = document.querySelectorAll('.swiper-slide');
-
-    filters.forEach(filter => {
-      filter.addEventListener('click', function() {
-        // Update active filter
-        filters.forEach(f => f.classList.remove('active'));
-        this.classList.add('active');
-
-        // Get selected collection handle
-        const collectionHandle = this.dataset.collection;
-
-        // Show/hide slides
-        slides.forEach(slide => {
-          if (slide.dataset.collection === collectionHandle) {
+      function filterProducts(collectionHandle) {
+        slides.forEach((slide) => {
+          if (collectionHandle === 'all' || slide.dataset.collection === collectionHandle) {
             slide.style.display = '';
           } else {
             slide.style.display = 'none';
           }
         });
-
-        // Update Swiper
         swiper.update();
-        swiper.slideTo(0); // Reset to first slide
+        swiper.slideTo(0, 0);
+        updateNavButtons();
+      }
+
+      filters.forEach((filter) => {
+        filter.addEventListener('click', function () {
+          filters.forEach((f) => f.classList.remove('active'));
+          this.classList.add('active');
+          filterProducts(this.dataset.collection);
+        });
       });
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          filters.forEach((f) => f.classList.remove('active'));
+          if (filters.length > 0) {
+            filters[0].classList.add('active');
+            filterProducts(filters[0].dataset.collection);
+          }
+        });
+      }
+
+      swiper.on('slideChange', updateNavButtons);
+      window.addEventListener('resize', () => {
+        swiper.update();
+        updateNavButtons();
+      });
+
+      // Init filter state
+      if (filters.length > 0) {
+        filters[0].classList.add('active');
+        filterProducts(filters[0].dataset.collection);
+      }
+
+      // Initial nav button state
+      updateNavButtons();
     });
   });
 </script>
@@ -252,24 +527,6 @@
       "step": 1,
       "default": 4,
       "label": "Products to show per collection"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 4,
-      "label": "Number of columns on desktop"
-    },
-    {
-      "type": "range",
-      "id": "columns_mobile",
-      "min": 1,
-      "max": 3,
-      "step": 1,
-      "default": 2,
-      "label": "Number of columns on mobile"
     },
     {
       "type": "text",
@@ -339,6 +596,43 @@
       "step": 1,
       "default": 20,
       "label": "Header margin bottom (px)"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image"
+    },
+    {
+      "type": "text",
+      "id": "banner_caption",
+      "label": "Banner Caption"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_heading",
+      "label": "Banner Heading"
+    },
+    {
+      "type": "text",
+      "id": "banner_btn_text",
+      "label": "Banner Text"
+    },
+    {
+      "type": "url",
+      "id": "banner_btn_url",
+      "label": "Banner URL"
+    },
+    {
+      "type": "text",
+      "id": "clear_filter_text",
+      "label": "Clear filter button text",
+      "default": "Clear Filter"
+    },
+    {
+      "type": "color",
+      "id": "clear_filter_color",
+      "label": "Clear filter color",
+      "default": "#999999"
     }
   ],
   "blocks": [

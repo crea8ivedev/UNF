@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // Featured Collection
 document.addEventListener("DOMContentLoaded", function () {
-  const swiper = new Swiper(".mySwiper", {
+  const swiper = new Swiper(".featured-collection-hp", {
     loop: false,
     slidesPerView: 1,
     spaceBetween: 20,

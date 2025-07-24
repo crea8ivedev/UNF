@@ -1,35 +1,3 @@
-{% assign product_tabs = product.metafields.custom.pdp_tabs.value %}
-
-{% if product_tabs and product_tabs != blank %}
-  <div class="product-tabs-section">
-    <ul class="tabs-nav">
-      {% for tab in product_tabs %}
-        <li class="tab-nav-item{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
-          {{ tab.tab_heading | escape }}
-        </li>
-      {% endfor %}
-    </ul>
-    <div class="tabs-content-wrapper">
-      {% for tab in product_tabs %}
-        <div class="tab-content{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
-          {% if tab.tab_image %}
-            <img
-              class="tab-img"
-              src="{{ tab.tab_image | image_url }}"
-              alt="{{ tab.tab_heading | escape }}"
-              width="auto"
-              height="auto"
-            >
-          {% endif %}
-          <div class="tab-desc">
-            {{ tab.description }}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
-
 <style>
   .product-tabs-section {
     margin-top: 2rem;
@@ -81,6 +49,37 @@
     }
   }
 </style>
+
+{% assign product_tabs = product.metafields.custom.pdp_tabs.value %}
+{% if product_tabs and product_tabs != blank %}
+  <div class="product-tabs-section container_fluid">
+    <ul class="tabs-nav">
+      {% for tab in product_tabs %}
+        <li class="tab-nav-item{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+          {{ tab.tab_heading | escape }}
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="tabs-content-wrapper">
+      {% for tab in product_tabs %}
+        <div class="tab-content{% if forloop.first %} active{% endif %}" data-tab-index="{{ forloop.index0 }}">
+          {% if tab.tab_image %}
+            <img
+              class="tab-img"
+              src="{{ tab.tab_image | image_url }}"
+              alt="{{ tab.tab_heading | escape }}"
+              width="auto"
+              height="auto"
+            >
+          {% endif %}
+          <div class="tab-desc">
+            {{ tab.description }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {

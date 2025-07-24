@@ -397,15 +397,20 @@
         "view_all_link": "",
         "show_filters": true,
         "products_to_show": 12,
-        "columns_desktop": 4,
-        "columns_mobile": 2,
         "button_text": "Buy Now",
         "padding_top": 30,
         "padding_right": 0,
         "padding_bottom": 30,
         "padding_left": 0,
         "background_color": "#ffffff",
-        "header_margin_bottom": 20
+        "header_margin_bottom": 20,
+        "banner_image": "shopify://shop_images/image_22.png",
+        "banner_caption": "The latest",
+        "banner_heading": "<p>Fragrances</p>",
+        "banner_btn_text": "Buy Now",
+        "banner_btn_url": "#",
+        "clear_filter_text": "Clear Filter",
+        "clear_filter_color": "#999999"
       }
     },
     "image_text_9cjaDD": {
@@ -419,6 +424,68 @@
         "button_text": "Discover Now",
         "button_url": "",
         "section_image": "shopify://shop_images/imagetxt.png"
+      }
+    },
+    "new_arrival_RD7nA6": {
+      "type": "new-arrival",
+      "blocks": {
+        "filter_DnnNhc": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "All",
+            "collection": "frontpage"
+          }
+        },
+        "filter_aQykPR": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "DJsdg",
+            "collection": "drinkware"
+          }
+        },
+        "filter_Y8XwEt": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "sgsfgfg",
+            "collection": "coffee"
+          }
+        },
+        "filter_AGVamb": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "Test",
+            "collection": "test"
+          }
+        }
+      },
+      "block_order": [
+        "filter_DnnNhc",
+        "filter_aQykPR",
+        "filter_Y8XwEt",
+        "filter_AGVamb"
+      ],
+      "name": "New Arrivals",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "subtitle": "Discover the Latest Drops",
+        "show_view_all": true,
+        "view_all_text": "View All",
+        "view_all_link": "",
+        "show_filters": true,
+        "products_to_show": 12,
+        "button_text": "Buy Now",
+        "padding_top": 30,
+        "padding_right": 0,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "background_color": "#ffffff",
+        "header_margin_bottom": 20,
+        "banner_caption": "",
+        "banner_heading": "",
+        "banner_btn_text": "",
+        "banner_btn_url": "",
+        "clear_filter_text": "Clear Filter",
+        "clear_filter_color": "#999999"
       }
     },
     "banner_image_79QnM7": {
@@ -555,6 +622,7 @@
     "marquee_EFn9jt",
     "new_arrival_mzhWhe",
     "image_text_9cjaDD",
+    "new_arrival_RD7nA6",
     "banner_image_79QnM7",
     "image_text_tHTi7n",
     "featured_blog_QbHk9R",
