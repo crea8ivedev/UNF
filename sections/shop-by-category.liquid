@@ -1,121 +1,57 @@
 <style>
-  .ctm-shop-cat-main {
-    padding: 80px 0;
-  }
-
-  .ctm-shop-cat-bg {
-    padding: 80px 0;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .ctm-shop-cat-container {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  .ctm-shop-cat-caption {
-    text-align: center;
-    margin-bottom: 12px;
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-    color: #6c6c6c;
-    text-transform: uppercase;
-  }
-
-  .ctm-shop-cat-heading {
-    text-align: center;
-    margin-bottom: 48px;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #000;
-  }
-
-  .ctm-shop-cat-list {
+  .ctm-shop-cat-img-wrap {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 40px;
-    flex-wrap: nowrap;
-  }
-
-  .ctm-shop-cat-item {
-    text-align: center;
-    width: 180px;
-    transition: transform 0.3s ease;
-  }
-
-  .ctm-shop-cat-item:hover {
-    transform: translateY(-6px);
-  }
-
-  .ctm-shop-cat-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
   }
 
   .ctm-shop-cat-img {
-    width: 180px;
-    height: 180px;
-    object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
   }
 
   .ctm-shop-cat-title {
-    display: block;
-    font-weight: 600;
-    font-size: 1rem;
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 25px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-align: center;
+    white-space: nowrap;
+    pointer-events: none;
   }
 
-  @media (max-width: 1024px) {
-    .ctm-shop-cat-list {
-      flex-wrap: wrap;
-      gap: 32px;
+  /* Responsive adjustments */
+  @media (max-width: 950px) {
+    .ctm-shop-cat-img-wrap {
+      width: 100px;
+      height: 100px;
     }
-  }
-
-  @media (max-width: 768px) {
-    .ctm-shop-cat-img {
-      width: 140px;
-      height: 140px;
-    }
-
-    .ctm-shop-cat-item {
-      width: 140px;
-    }
-
     .ctm-shop-cat-title {
-      font-size: 0.95rem;
-    }
-
-    .ctm-shop-cat-heading {
-      font-size: 1.75rem;
+      font-size: 0.85rem;
+      padding: 4px 12px;
     }
   }
-
-  @media (max-width: 480px) {
-    .ctm-shop-cat-img {
-      width: 110px;
-      height: 110px;
+  @media (max-width: 570px) {
+    .ctm-shop-cat-img-wrap {
+      width: 60px;
+      height: 60px;
     }
-
-    .ctm-shop-cat-item {
-      width: 110px;
-    }
-
     .ctm-shop-cat-title {
-      font-size: 0.9rem;
-    }
-
-    .ctm-shop-cat-heading {
-      font-size: 1.5rem;
-    }
-
-    .ctm-shop-cat-caption {
-      font-size: 0.7rem;
+      font-size: 0.62rem;
+      padding: 2px 7px;
     }
   }
 </style>
@@ -148,22 +84,23 @@
                 <a href="{{ block.settings.collection_url }}" class="ctm-shop-cat-link">
               {% endif %}
 
-              {% if block.settings.collection_image != blank %}
-                <img
-                  src="{{ block.settings.collection_image | image_url: width: 400 }}"
-                  alt="{{ block.settings.collection_name | escape }}"
-                  class="ctm-shop-cat-img"
-                  loading="lazy"
-                  width="auto"
-                  height="auto"
-                >
-              {% endif %}
-
-              {% if block.settings.collection_name != blank %}
-                <span class="ctm-shop-cat-title">
-                  {{ block.settings.collection_name }}
-                </span>
-              {% endif %}
+              <div class="ctm-shop-cat-img-wrap">
+                {% if block.settings.collection_image != blank %}
+                  <img
+                    src="{{ block.settings.collection_image | image_url: width: 400 }}"
+                    alt="{{ block.settings.collection_name | escape }}"
+                    class="ctm-shop-cat-img"
+                    loading="lazy"
+                    width="auto"
+                    height="auto"
+                  >
+                {% endif %}
+                {% if block.settings.collection_name != blank %}
+                  <span class="ctm-shop-cat-title">
+                    {{ block.settings.collection_name }}
+                  </span>
+                {% endif %}
+              </div>
 
               {% if block.settings.collection_url != blank %}
                 </a>

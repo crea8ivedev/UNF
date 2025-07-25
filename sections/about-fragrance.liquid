@@ -1,4 +1,150 @@
-<div class="{{ section.settings.extra_class }} main-fragrance-hp container_fluid">
+<style>
+  .ctm-main-about-fragrance {
+    display: flex;
+    flex-direction: row;
+    background: #faf7ed; /* light beige */
+    position: relative;
+    min-height: 530px;
+  }
+
+  /* Textual section */
+  .ctm-frag-text {
+    flex: 1 1 0;
+    max-width: 825px;
+    margin-left: 283px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .ctm-frag-head p {
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    font-size: 2.5rem;
+    color: #1a1710;
+    margin: 0 0 24px 0;
+    letter-spacing: -1px;
+  }
+
+  .ctm-frag-description p {
+    font-size: 1.09rem;
+    margin: 0 0 12px 0;
+    line-height: 1.8;
+    color: #665a44;
+  }
+
+  .ctm-tick-text-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #9c8052;
+  }
+
+  .ctm-tick-txt-inner {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .ctm-tick-text-main p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .ctm-frag-tick {
+    flex-shrink: 0;
+  }
+
+  /* Button styling */
+  .ctm-frag-btn {
+    margin-top: 28px;
+  }
+  .ctm-frag-btn a {
+    display: inline-block;
+    background: #9c8052;
+    color: #fff;
+    padding: 13px 38px;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    text-decoration: none;
+    transition: background 0.15s;
+    font-weight: 600;
+  }
+  .ctm-frag-btn a:hover {
+    background: #7e6134;
+  }
+
+  /* Image section */
+  .ctm-frag-image {
+    flex: 1 1 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-width: 360px;
+    z-index: 2;
+  }
+  .ctm-frag-image img {
+    object-fit: contain;
+    max-width: 888px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Decorative Branch - Top Left */
+  .ctm-main-about-fragrance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 100px;
+    background: url('https://cdn.shopify.com/s/files/1/0622/2633/3831/files/branch.png') no-repeat left top / contain;
+    z-index: 3;
+  }
+
+  /* Khanjar Logo - Bottom Left */
+  .ctm-main-about-fragrance::after {
+    content: '';
+    position: absolute;
+    left: 60px;
+    bottom: 32px;
+    width: 95px;
+    height: 58px;
+    background: url('https://cdn.shopify.com/s/files/1/0622/2633/3831/files/khanjar.png') no-repeat left bottom /
+      contain;
+    z-index: 3;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 1050px) {
+    .ctm-main-about-fragrance {
+      flex-direction: column;
+      padding: 40px 14px 24px 0;
+      min-height: 450px;
+    }
+    .ctm-frag-text {
+      margin-left: 30px;
+      max-width: 98vw;
+    }
+    .ctm-frag-image {
+      min-width: unset;
+      margin-top: 24px;
+      justify-content: flex-start;
+    }
+    .ctm-frag-image img {
+      margin-right: 0;
+      max-width: 320px;
+    }
+    .ctm-main-about-fragrance::before,
+    .ctm-main-about-fragrance::after {
+      left: 10px;
+    }
+  }
+</style>
+<div class="{{ section.settings.extra_class }} main-fragrance-hp">
   <div class="ctm-frag-text">
     {% if section.settings.heading != blank %}
       <div class="ctm-frag-head">
@@ -11,15 +157,21 @@
         {{ section.settings.description }}
       </div>
     {% endif %}
-
-    {% for block in section.blocks %}
-      {% if block.settings.tick_text != blank %}
-        <div class="ctm-tick-text-main">
-          {% render 'frag-tick' %}
-          <p>{{ block.settings.tick_text }}</p>
-        </div>
-      {% endif %}
-    {% endfor %}
+    <div class="ctm-tick-text-main">
+      {% for block in section.blocks %}
+        {% if block.settings.tick_text != blank %}
+          <div class="ctm-tick-txt-inner">
+            {% render 'frag-tick' %}
+            <p>{{ block.settings.tick_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if section.settings.button_heading != blank %}
+      <div class="ctm-frag-btn">
+        <a href="{{ section.settings.button_url }}">{{ section.settings.button_heading }}</a>
+      </div>
+    {% endif %}
   </div>
 
   {% if section.settings.section_image != blank %}
@@ -27,9 +179,6 @@
       <img src="{{ section.settings.section_image | image_url }}" width="auto" height="auto" alt="frag image">
     </div>
   {% endif %}
-  <div class="ctm-frag-btn">
-    <a href="{{ section.settings.button_url }}">{{ section.settings.button_heading }}</a>
-  </div>
 </div>
 
 {% schema %}

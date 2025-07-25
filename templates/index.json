@@ -56,72 +56,51 @@
         "extra_class": "ctm-hp-slider"
       }
     },
-    "multicolumn_Ak9xCU": {
-      "type": "multicolumn",
+    "icon_with_text_XmxU7h": {
+      "type": "icon-with-text",
       "blocks": {
-        "column_3KAfz3": {
-          "type": "column",
+        "icon_and_text_y7y7bH": {
+          "type": "icon_and_text",
           "settings": {
-            "image": "shopify://shop_images/gift.svg",
-            "title": "Up To 40% Offer",
-            "text": "<p>Exclusive deals on top scents</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "shopify://shop_images/gift.svg",
+            "head": "<h3>Up To 40% Offer</h3>",
+            "description": "<p>Exclusive deals on top scents</p>"
           }
         },
-        "column_dHHRrm": {
-          "type": "column",
+        "icon_and_text_xpQVxK": {
+          "type": "icon_and_text",
           "settings": {
-            "image": "shopify://shop_images/perfume.svg",
-            "title": "Perfume Variety",
-            "text": "<p>Customize your perfect gift set</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "shopify://shop_images/perfume.svg",
+            "head": "<h3>Perfume Variety</h3>",
+            "description": "<p>Customize your perfect gift set</p>"
           }
         },
-        "column_eaGCUf": {
-          "type": "column",
+        "icon_and_text_7WCdbY": {
+          "type": "icon_and_text",
           "settings": {
-            "image": "shopify://shop_images/truck_dbc6d754-ea95-4879-a47c-166d17ead717.svg",
-            "title": "Free Shipping",
-            "text": "<p>On all orders ₹600+</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "shopify://shop_images/truck_dbc6d754-ea95-4879-a47c-166d17ead717.svg",
+            "head": "<h3>Free Shipping</h3>",
+            "description": "<p>On all orders ₹600+</p>"
           }
         },
-        "column_gQWxd6": {
-          "type": "column",
+        "icon_and_text_mzBdxq": {
+          "type": "icon_and_text",
           "settings": {
-            "image": "shopify://shop_images/return.svg",
-            "title": "Easy Returns",
-            "text": "<p>30-day return policy, no questions asked</p>",
-            "link_label": "",
-            "link": ""
+            "icon": "shopify://shop_images/return.svg",
+            "head": "<h3>Easy Returns</h3>",
+            "description": "<p>30-day return policy, no questions asked</p>"
           }
         }
       },
       "block_order": [
-        "column_3KAfz3",
-        "column_dHHRrm",
-        "column_eaGCUf",
-        "column_gQWxd6"
+        "icon_and_text_y7y7bH",
+        "icon_and_text_xpQVxK",
+        "icon_and_text_7WCdbY",
+        "icon_and_text_mzBdxq"
       ],
-      "name": "t:sections.multicolumn.presets.name",
+      "name": "Icon with Text",
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 4,
-        "column_alignment": "left",
-        "background_style": "none",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "extra_class": ""
       }
     },
     "shop_by_category_pG6bK3": {
@@ -502,6 +481,68 @@
         "banner_image": "shopify://shop_images/Product_image.png"
       }
     },
+    "new_arrival_tjLpLT": {
+      "type": "new-arrival",
+      "blocks": {
+        "filter_Mff6fj": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "All",
+            "collection": "frontpage"
+          }
+        },
+        "filter_A3nFF4": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "DJsdg",
+            "collection": "drinkware"
+          }
+        },
+        "filter_G7fdXH": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "sgsfgfg",
+            "collection": "coffee"
+          }
+        },
+        "filter_mcDHJt": {
+          "type": "filter",
+          "settings": {
+            "filter_label": "Test",
+            "collection": "test"
+          }
+        }
+      },
+      "block_order": [
+        "filter_Mff6fj",
+        "filter_A3nFF4",
+        "filter_G7fdXH",
+        "filter_mcDHJt"
+      ],
+      "name": "New Arrivals",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "subtitle": "Discover the Latest Drops",
+        "show_view_all": true,
+        "view_all_text": "View All",
+        "view_all_link": "",
+        "show_filters": true,
+        "products_to_show": 12,
+        "button_text": "Buy Now",
+        "padding_top": 30,
+        "padding_right": 0,
+        "padding_bottom": 30,
+        "padding_left": 0,
+        "background_color": "#ffffff",
+        "header_margin_bottom": 20,
+        "banner_caption": "",
+        "banner_heading": "",
+        "banner_btn_text": "",
+        "banner_btn_url": "",
+        "clear_filter_text": "Clear Filter",
+        "clear_filter_color": "#999999"
+      }
+    },
     "image_text_tHTi7n": {
       "type": "image-text",
       "name": "Image Text",
@@ -615,7 +656,7 @@
   },
   "order": [
     "slider_e6bkUd",
-    "multicolumn_Ak9xCU",
+    "icon_with_text_XmxU7h",
     "shop_by_category_pG6bK3",
     "about_fragrance_h6EH4a",
     "marquee_LcrqnM",
@@ -624,6 +665,7 @@
     "image_text_9cjaDD",
     "new_arrival_RD7nA6",
     "banner_image_79QnM7",
+    "new_arrival_tjLpLT",
     "image_text_tHTi7n",
     "featured_blog_QbHk9R",
     "faq_i3cn7y",
