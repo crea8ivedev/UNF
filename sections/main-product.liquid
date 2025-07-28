@@ -770,8 +770,9 @@
     </button>
   </div>
 
+  {% assign product_form_id = 'product-form-' | append: section.id %}
+
   <div class="sticky-cart-body">
-    <!-- Variant Options -->
     <div id="sticky-variant-selectors">
       {% for option in product.options_with_values %}
         <div class="product-option-group">
@@ -792,32 +793,16 @@
       {% endfor %}
     </div>
 
-    <form id="sticky-add-to-cart-form">
-      <input type="hidden" name="id" id="variant-id-input" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="add-to-cart-btn" aria-label="Add to cart">Add to cart</button>
-    </form>
+    {%- render 'buy-buttons', product: product, product_form_id: product_form_id, section_id: section.id -%}
   </div>
 </div>
 
 <script>
-  //Sticky ATC pdp
   document.addEventListener("DOMContentLoaded", function () {
-    // --- Dawn cart drawer: open after AJAX add ---
-    function openCartDrawer() {
-      const cartTrigger = document.getElementById('cart-icon-bubble');
-      if (cartTrigger) {
-        cartTrigger.click(); // Shopify-native drawer trigger
-      } else if (window.cartDrawer && typeof window.cartDrawer.open === 'function') {
-        window.cartDrawer.open(); // Fallback
-      }
-    }
-
-    // --- Variant Selectors (split by option) ---
     const productVariants = {{ product.variants | json }};
     const optionNames = {{ product.options | json }};
     const numOptions = optionNames.length;
 
-    // Helper to find variant ID for current selections
     function findVariantId(selectedOptions) {
       for (let i = 0; i < productVariants.length; i++) {
         let match = true;
@@ -832,16 +817,13 @@
       return null;
     }
 
-    // Handle option button clicks
     document.querySelectorAll('.option-buttons').forEach((group, optIndex) => {
       group.addEventListener('click', function (e) {
         if (!e.target.matches('.option-btn')) return;
 
-        // Set active on this group
         group.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
 
-        // Gather current selections in order
         let selectedOptions = [];
         let allSelected = true;
         document.querySelectorAll('.option-buttons').forEach((optionGroup, groupIndex) => {
@@ -853,7 +835,7 @@
           }
         });
 
-        const variantInput = document.getElementById('variant-id-input');
+        const variantInput = document.querySelector('.sticky-cart-body input[name="id"]');
         if (!variantInput) return;
 
         if (!allSelected) {
@@ -866,50 +848,6 @@
       });
     });
 
-    // --- AJAX Add to Cart ---
-    const addToCartForm = document.getElementById('sticky-add-to-cart-form');
-    if (addToCartForm) {
-      addToCartForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const variantInput = document.getElementById('variant-id-input');
-        const variantId = variantInput ? variantInput.value : null;
-
-        if (!variantId) {
-          alert('Please select all available options before adding to cart.');
-          return;
-        }
-
-        const formData = new FormData();
-        formData.append('id', variantId);
-
-        fetch('/cart/add.js', {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        })
-        .then(resp => {
-          if (!resp.ok) throw new Error('Error adding to cart');
-          return resp.json();
-        })
-        .then(data => {
-          // ✅ Trigger refresh and open drawer only after successful add
-          document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
-
-          const cartTrigger = document.getElementById('cart-icon-bubble');
-          if (cartTrigger) {
-            cartTrigger.click();
-          } else if (window.cartDrawer && typeof window.cartDrawer.open === 'function') {
-            window.cartDrawer.open();
-          }
-        })
-        .catch(err => {
-          alert('Something went wrong while adding the product to your cart. Please try again.');
-          console.error(err);
-        });
-      });
-    }
-
-    // --- Drawer toggle logic ---
     const drawer = document.getElementById("sticky-cart-drawer");
     const toggleBtn = document.getElementById("toggle-cart-drawer");
 
@@ -930,24 +868,6 @@
       if (header) {
         header.addEventListener("click", toggleDrawer);
       }
-    }
-
-    // --- IntersectionObserver to hide/show sticky drawer ---
-    const productInfo = document.querySelector("#ctm-product-info");
-    if (productInfo && drawer) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              drawer.classList.add("hidden");
-            } else {
-              drawer.classList.remove("hidden");
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-      observer.observe(productInfo);
     }
   });
 </script>
