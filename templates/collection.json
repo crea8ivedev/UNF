@@ -11,10 +11,66 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "blocks": {
+        "slide_wejRwB": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_76.png",
+            "title": "Exotic Trails",
+            "link": ""
+          }
+        },
+        "slide_yfynLD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_2.png",
+            "title": "Floral Bliss",
+            "link": ""
+          }
+        },
+        "slide_AXXgmz": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_3.png",
+            "title": "Lattafa Eclaire",
+            "link": ""
+          }
+        },
+        "slide_Kmd9BT": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_4.png",
+            "title": "Best Seller",
+            "link": ""
+          }
+        },
+        "slide_6xp38M": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse5.png",
+            "title": "Bold Elegance",
+            "link": ""
+          }
+        },
+        "slide_49Dbrh": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Ellipse_6.png",
+            "title": "Classic Charm",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_wejRwB",
+        "slide_yfynLD",
+        "slide_AXXgmz",
+        "slide_Kmd9BT",
+        "slide_6xp38M",
+        "slide_49Dbrh"
+      ],
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": false,
-        "color_scheme": "scheme-1"
+        "background_image": "shopify://shop_images/collection_banner.png"
       }
     },
     "product-grid": {

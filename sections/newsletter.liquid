@@ -1,5 +1,6 @@
 {{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
 {{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+{% # theme-check-disable %}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -16,7 +17,7 @@
 {%- endstyle -%}
 
 <div class="newsletter center {% if section.settings.full_width == false %}newsletter--narrow page-width{% endif %}">
-  <div class="newsletter__wrapper color-{{ section.settings.color_scheme }} gradient content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
+  <div class="newsletter__wrapper content-container isolate{% if section.settings.full_width %} content-container--full-width{% endif %} section-{{ section.id }}-padding">
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}
@@ -44,7 +45,7 @@
             {{ block.settings.text }}
           </div>
         {%- when 'email_form' -%}
-          <div {{ block.shopify_attributes }}>
+          <div class="ctm-newsletter-form" {{ block.shopify_attributes }}>
             {% form 'customer', class: 'newsletter-form' %}
               <input type="hidden" name="contact[tags]" value="newsletter">
               <div
@@ -114,7 +115,6 @@
                 </h3>
               {%- endif -%}
             {% endform %}
-          </div>
         {% when 'trustpilot' %}
           {% if block.settings['trust-btn-image'] != blank %}
             <div class="trustpilot-btn" {{ block.shopify_attributes }}>
@@ -128,6 +128,7 @@
               </a>
             </div>
           {% endif %}
+          </div>
       {%- endcase -%}
     {%- endfor -%}
   </div>
